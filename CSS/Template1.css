@@ -11,7 +11,7 @@ body {
 }
 /* Start Project Variables */
 :root {
-  --main-color: tomato;
+  --main-color: #fdac53;
   --secondry-color: black;
 }
 /* End Project Variables */
@@ -113,6 +113,7 @@ header .logo:hover span:last-child {
 }
 header .links {
   position: relative;
+  cursor: pointer;
 }
 header .links .icon {
   width: 30px;
@@ -136,22 +137,23 @@ header .links .icon span:nth-child(2) {
 header .links .icon span:last-child {
   width: 100%;
 }
-header .links:hover .icon span:nth-child(2) {
+header .links.mobile .icon span:nth-child(2) {
   display: none;
   width: 100%;
 }
-header .links:hover .icon span:first-child {
+header .links.mobile .icon span:first-child {
   transform: rotate(45deg) translate(6px);
   background-color: var(--main-color);
   height: 4px;
 }
-header .links:hover .icon span:last-child {
+header .links.mobile .icon span:last-child {
   transform: rotate(-45deg) translate(6px);
   background-color: var(--main-color);
   height: 4px;
 }
 
 header .links ul {
+  position: relative;
   background-color: #eee;
   margin: 0;
   padding: 0;
@@ -161,7 +163,9 @@ header .links ul {
   right: 0;
   width: 200px;
   top: calc(100% + 20px);
-  display: none;
+  opacity: 0;
+  z-index: -1;
+  transition: 0.5s;
 }
 header .links ul::after {
   content: "";
@@ -172,8 +176,9 @@ header .links ul::after {
   top: -20px;
   right: 5px;
 }
-header .links:hover ul {
-  display: block;
+header .links.mobile ul {
+  opacity: 1;
+  z-index: 100;
 }
 header .links ul li {
   margin-bottom: 5px;
@@ -387,6 +392,7 @@ header .links ul li:hover a {
   top: 91%;
   left: 50%;
   transform: translate(-50%, -50%);
+  cursor: pointer;
   transition: 0.3s;
 }
 .portfolio .container button:hover {
